@@ -11,18 +11,13 @@
     {% include 'navi.html' %}
 
     <!-- Main Content -->
-    <div class="container">
+    <div>
       {% if messages %}
-      <ul class="list-unstyled">
+      <ul>
         {% for message in messages %}
         <li {% if message.tags %} {% endif %}>
           {{ message }} Close button
-          <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            data-dismiss="alert"
-          >
+          <button type="button" aria-label="Close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span>
           </button>
         </li>

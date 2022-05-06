@@ -3,12 +3,12 @@
 <form method="POST" action="{% url 'blog:login' %}">
   {% csrf_token %}
 
-  <table class="table">
+  <table>
     {{ form }}
   </table>
   <p>Hello</p>
   <input type="hidden" name="next" value="{{ next }}" />
-  <button class="btn btn-primary" type="submit">ログイン</button>
+  <button type="submit">ログイン</button>
 </form>
 
 {% endblock %}
