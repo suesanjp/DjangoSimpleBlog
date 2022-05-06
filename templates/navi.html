@@ -1,27 +1,17 @@
-<!-- Navigation -->
 <nav>
   <div>
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div>
-      <button
-        type="button"
-        data-toggle="collapse"
-        data-target="#bs-example-navbar-collapse-1"
-      >
-        <span>Toggle navigation</span>
-        Menu <i></i>
-      </button>
       <a href="{% url 'blog:index' %}">Micro Blog</a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div id="bs-example-navbar-collapse-1">
+    <div>
       <ul>
         <li>
           <a href="{% url 'blog:index' %}">Home</a>
         </li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'blog:index' %}">{{ user.username }}</a></li>
+        <li>
+          <a href="{% url 'blog:index' %}">{{ user.username }}</a>
+        </li>
         <li>
           <a href="{% url 'blog:logout' %}">Logout</a>
         </li>
@@ -32,7 +22,5 @@
       </ul>
       {% endif %}
     </div>
-    <!-- /.navbar-collapse -->
   </div>
-  <!-- /.container -->
 </nav>

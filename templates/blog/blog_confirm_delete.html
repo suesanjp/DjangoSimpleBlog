@@ -4,7 +4,7 @@
 
 <form method="post">
   {% csrf_token %}
-  <p>本当に削除してよろしいですか？ "{{ object.text }}"?</p>
+  <p>本当に削除してよろしいですか？</br>"{{ object.text }}"</p>
   {{ form }}
   <button type="submit">削除</button>
   <a href="{% url 'blog:index' %}">キャンセル</a>

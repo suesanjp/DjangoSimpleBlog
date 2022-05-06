@@ -9,14 +9,14 @@
   </head>
   <body>
     {% include 'navi.html' %}
-
+<header style="background-image: url('{% static "img/home-bg.jpg" %}')"></header>
     <!-- Main Content -->
     <div>
       {% if messages %}
       <ul>
         {% for message in messages %}
         <li {% if message.tags %} {% endif %}>
-          {{ message }} Close button
+          {{ message }} {# Close button #}
           <button type="button" aria-label="Close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span>
           </button>
