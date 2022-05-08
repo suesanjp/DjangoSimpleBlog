@@ -1,29 +1,33 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Micro Blog</title>
-  </head>
-  <body>
-    {% include 'navi.html' %}
-<header style="background-image: url('{% static "img/home-bg.jpg" %}')"></header>
-    <!-- Main Content -->
-    <div>
-      {% if messages %}
-      <ul>
-        {% for message in messages %}
-        <li {% if message.tags %} {% endif %}>
-          {{ message }} {# Close button #}
-          <button type="button" aria-label="Close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %} {% block content %} {% endblock%}
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micro Blog</title>
+  <link href="{% static "/css/style.css" %}" rel="stylesheet">
+</head>
+
+<body>
+  {% include 'navi.html' %}
+  <header style="background-image: url('{% static "img/home-bg.jpg" %}')"></header>
+  <!-- Main Content -->
+  <div>
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li {% if message.tags %} {% endif %}>
+        {{ message }} {# Close button #}
+        <button type="button" aria-label="Close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% block content %} {% endblock%}
+  </div>
+</body>
+
 </html>
