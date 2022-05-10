@@ -2,50 +2,40 @@
 {% load blog_extras %}
 {% block content %}
 
+{# Publish Button#}
 {% if user.is_authenticated %}
-<p><a href="{% url 'blog:create'  %}" >NEW</a></p>
+<a class="btn btn-primary" href="{% url 'blog:create'  %}">NEW</a>
 {% endif %}
 
-<div >
-  <div >
-
-    {% for blog in blogs %}
-    <div >
-      <a href="{% url 'blog:detail' blog.id %}">
-        <h2 >
-          {{ blog.text }}
-        </h2>
-      </a>
-      <p > {{ blog.created_at|timesince|upto:',' }}前</p>
-    </div>
-    {% endfor %}
-
-  </div>
+{# Blog List #}
+{% for blog in blogs %}
+<div>
+  <a href=" {% url 'blog:detail' blog.id %}">
+    <h2>
+      {{ blog.text }}
+    </h2>
+  </a>
+  <p> {{ blog.created_at|timesince|upto:',' }}前</p>
 </div>
-<nav aria-label="Page navigation example">
-  <ul >
-    {% if page_obj.has_previous %}
-    <li >
-      <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span >Previous</span>
-      </a>
-    </li>
-    {% endif %}
+{% endfor %}
 
-    {% for page in paginator.page_range %}
-    <li {% if page == page_obj.number %}{% endif %}><a href="?page={{ page }}">{{ page }}</a></li>
-    {% endfor %}
+{# Pagination #}
+<div class="btn-group">
 
-    {% if page_obj.has_next %}
-    <li >
-      <a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span >Next</span>
-      </a>
-    </li>
-    {% endif %}
-  </ul>
-</nav>
+  {% if page_obj.has_previous %}
+  <a class="btn" href="?page={{ page_obj.previous_page_number }}">
+    &laquo;</a>
+  {% endif %}
+
+  {% for page in paginator.page_range %}
+  <a class="btn{% if page == page_obj.number %} btn-active{% endif %}" href='
+        ?page={{ page }}'>{{ page }}</a>
+  {% endfor %}
+
+  {% if page_obj.has_next %}
+  <a class="btn" href="?page={{ page_obj.next_page_number }}">
+    &raquo;</a>
+  {% endif %}
+</div>
 
 {% endblock %}
