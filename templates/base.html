@@ -11,23 +11,23 @@
 </head>
 
 <body class="bg-base-200">
-  {% include 'navi.html' %}
-  <header style="background-image: url('{% static "img/home-bg.jpg" %}')"></header>
+  <header class="bg-header-image">
+    {% include 'navi.html' %}
+    <h1 class="py-60 text-base-300 font-extrabold text-6xl text-center">Micro Blog</h1>
+  </header>
   <!-- Main Content -->
-  <div>
-    {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <li {% if message.tags %} {% endif %}>
-        {{ message }} {# Close button #}
-        <button type="button" aria-label="Close" data-dismiss="alert">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %} {% block content %} {% endblock%}
-  </div>
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li class="alert alert-info shadow-lg" {% if message.tags %} {% endif %}>
+      {{ message }} {# Close button #}
+      <button type="button" aria-label="Close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% block content %} {% endblock%}
 </body>
 
 </html>
