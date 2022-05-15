@@ -67,7 +67,3 @@ class BlogDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("blog:index")
 
     login_url = "/login"
-
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "削除しました")
-        return super().delete(request, *args, **kwargs)
