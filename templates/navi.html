@@ -1,0 +1,26 @@
+<nav>
+  <div class="navbar text-base-200">
+    <div class="flex-1">
+      <a class="no-underline font-extrabold text-xl" href="{% url 'blog:index' %}">Micro Blog</a>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal p-0">
+        <li>
+          <a class="font-extrabold no-underline" href="{% url 'blog:index' %}">Home</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li>
+          <a class="font-extrabold no-underline" href="{% url 'blog:index' %}">{{ user.username }}</a>
+        </li>
+        <li>
+          <a class="font-extrabold no-underline" href="{% url 'blog:logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li>
+          <a class="font-extrabold no-underline" href="{% url 'blog:login' %}?next={{ request.path }}">Login</a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>

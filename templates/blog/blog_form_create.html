@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>新規作成</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form }}
+  <button class="btn btn-primary" type="submit">送信</button>
+</form>
+
+{% endblock %}

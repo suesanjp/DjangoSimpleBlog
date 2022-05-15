@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+
+<form method="POST" action="{% url 'blog:login' %}">
+  {% csrf_token %}
+
+  <table>
+    {{ form }}
+  </table>
+  <p>Hello</p>
+  <input type="hidden" name="next" value="{{ next }}" />
+  <button type="submit">ログイン</button>
+</form>
+
+{% endblock %}

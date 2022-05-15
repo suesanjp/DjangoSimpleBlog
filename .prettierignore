@@ -1,0 +1,3 @@
+# django html
+templates/*.html
+templates/**/*.html
